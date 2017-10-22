@@ -19,7 +19,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "audio", "firefox", "editor", "term" };
+static const char *tags[] = { "audio", "firefox", "editor", "term", "extra" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -59,6 +59,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "termite", NULL };
+static const char *mkdarkcmd[] = {"fish", "-c", "mkdark", NULL};
+static const char *mklightcmd[] = {"fish", "-c", "mklight", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -85,6 +87,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_F1,     spawn,          {.v = mklightcmd} },
+	{ MODKEY,                       XK_F2,     spawn,          {.v = mkdarkcmd} },
 	TAGKEYS(                        XK_plus,                   0)
 	TAGKEYS(                        XK_ecaron,                 1)
 	TAGKEYS(                        XK_scaron,                 2)
