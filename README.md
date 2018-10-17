@@ -1,3 +1,31 @@
+# dwm
+My fork of dwm. The following patches have been applied:
+* autostart
+* pertag
+* centeredmaster
+* noborder
+* bottomstack
+* bstackhorizontal
+
+Configuration has been changed to add Alt+O and Alt+U for centeredmaster.
+See `config.def.h` for my current configuration.
+
+ProFont needs to be installed for this fork of dwm to render properly.
+A czech localization of the font is included in the repository.
+
+For the brightness settings to work, isntall `mkdark` and `mklight` into
+PATH and the `.dwm` into your home directory.
+
+The two scripts in `.dwm` can be used to auomatically execute commands on
+dwm startup.
+
+If you want to get a useful status bar, install `slstatus` or one of those
+Go pieces of shit. Alternatively, you can write your own status application
+as it is pretty easy, just use `xsetroot -name (stuff)` command to set the
+status to whatever you want.
+
+# Original readme:
+
 dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.
