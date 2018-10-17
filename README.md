@@ -7,8 +7,8 @@ My fork of dwm. The following patches have been applied:
 * bottomstack
 * bstackhorizontal
 
-Configuration has been changed to add Alt+O and Alt+U for centeredmaster.
-See `config.def.h` for my current configuration.
+Configuration has been changed to add Alt+O and Alt+U (conflicts with nano editor)
+for other changes. See `config.def.h` for my current configuration.
 
 ProFont needs to be installed for this fork of dwm to render properly.
 A czech localization of the font is included in the repository.
@@ -77,3 +77,11 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
+
+
+
+
+
+
+
