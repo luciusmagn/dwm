@@ -1,0 +1,12 @@
+#!/bin/fish
+set current "."
+while not [ -f $current ]
+	cd "$current"
+	ls | dmenu $argv | read current
+end
+
+if lp -d HP-LaserJet-M506 "$current"
+	echo "printed!" | dmenu $argv
+else
+	echo "failed to send job to printer" | dmenu $argv
+end

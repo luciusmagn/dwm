@@ -1,0 +1,4 @@
+#!/bin/fish
+while not netctl list | cut -b 3- | dmenu $argv | ifne xargs netctl restart
+end
+echo "connected!" | dmenu $argv
