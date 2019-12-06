@@ -1,0 +1,12 @@
+#!/bin/fish
+set current "."
+while not [ -f $current ]
+	cd "$current"
+	ls | dmenu $argv | read current
+end
+
+if ffplay "$current"
+	echo "playing $current" | dmenu $argv
+else
+	echo "failed" | dmenu $argv
+end

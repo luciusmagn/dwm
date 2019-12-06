@@ -28,7 +28,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "firefoxdeveloperedition",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "Subl3",     NULL,       NULL,       1 << 2,       0,           -1 },
 };
 
@@ -36,6 +36,10 @@ static const Rule rules[] = {
 static const float mfact     = 0.60; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
+static const int showtab            = showtab_auto; /* Default tab bar show mode  */
+static const Bool toptab            = True;         /* False means bottom tab bar */
+static int def_layouts[1 + LENGTH(tags)]  = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -64,7 +68,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenu_netcmd[] = { "dmenu_net", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenu_printcmd[] = { "dmenu_print", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "termite", NULL };
+static const char *dmenu_playcmd[] = { "dmenu_play", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *mkdarkcmd[] = {"fish", "-c", "mkdark", NULL};
 static const char *mklightcmd[] = {"fish", "-c", "mklight", NULL};
 
@@ -100,6 +105,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F2,     spawn,          {.v = mkdarkcmd} },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = dmenu_netcmd} },
 	{ MODKEY,                       XK_F4,     spawn,          {.v = dmenu_printcmd} },
+	{ MODKEY,                       XK_F5,     spawn,          {.v = dmenu_playcmd} },
 	TAGKEYS(                        XK_plus,                   0)
 	TAGKEYS(                        XK_ecaron,                 1)
 	TAGKEYS(                        XK_scaron,                 2)
